@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="Z:\" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="web.config" publishTime="06/20/2012 16:56:00" />
+    <file relUrl="bin/int422Final.pdb" publishTime="06/21/2012 17:32:26" />
+    <file relUrl="Web.sitemap" publishTime="06/21/2012 15:35:56" />
+    <file relUrl="temp1.aspx" publishTime="06/20/2012 20:25:12" />
+    <file relUrl="bin/int422Final.dll" publishTime="06/21/2012 17:32:26" />
+    <file relUrl="Private/Exam/exam.Master" publishTime="06/21/2012 15:41:22" />
+    <file relUrl="createuser.aspx" publishTime="06/20/2012 13:31:10" />
+    <file relUrl="Private/Exam/q1.aspx" publishTime="06/21/2012 16:18:40" />
+    <file relUrl="Private/Exam/start.aspx" publishTime="06/21/2012 17:33:26" />
+    <file relUrl="login.aspx" publishTime="06/20/2012 17:19:56" />
+    <file relUrl="Private/Exam/q2.aspx" publishTime="06/21/2012 17:17:48" />
+    <file relUrl="temp.aspx" publishTime="06/20/2012 11:54:52" />
+    <file relUrl="default.aspx" publishTime="06/20/2012 14:12:28" />
+  </publishProfile>
+</publishData>

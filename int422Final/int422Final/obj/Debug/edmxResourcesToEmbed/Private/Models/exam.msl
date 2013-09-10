@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="examStoreContainer" CdmEntityContainer="exam_Entities">
+    <EntitySetMapping Name="v_Customer">
+      <EntityTypeMapping TypeName="exam.v_Customer">
+        <MappingFragment StoreEntitySet="v_Customer">
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="c_password" ColumnName="c_password" />
+          <ScalarProperty Name="l_name" ColumnName="l_name" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="licence_type" ColumnName="licence_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_Customer_Vehicle">
+      <EntityTypeMapping TypeName="exam.v_Customer_Vehicle">
+        <MappingFragment StoreEntitySet="v_Customer_Vehicle">
+          <ScalarProperty Name="vuId" ColumnName="vuId" />
+          <ScalarProperty Name="model_id" ColumnName="model_id" />
+          <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+          <ScalarProperty Name="insured" ColumnName="insured" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="trans" ColumnName="trans" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_Vehicle_Model">
+      <EntityTypeMapping TypeName="exam.v_Vehicle_Model">
+        <MappingFragment StoreEntitySet="v_Vehicle_Model">
+          <ScalarProperty Name="model_id" ColumnName="model_id" />
+          <ScalarProperty Name="vehicle_type" ColumnName="vehicle_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

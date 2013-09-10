@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="exam.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="examStoreContainer">
+          <EntitySet Name="v_Customer" EntityType="exam.Store.v_Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="v_Customer_Vehicle" EntityType="exam.Store.v_Customer_Vehicle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="v_Vehicle_Model" EntityType="exam.Store.v_Vehicle_Model" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__v_Custome__custo__44952D46" Association="exam.Store.FK__v_Custome__custo__44952D46">
+            <End Role="v_Customer" EntitySet="v_Customer" />
+            <End Role="v_Customer_Vehicle" EntitySet="v_Customer_Vehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__v_Custome__model__4589517F" Association="exam.Store.FK__v_Custome__model__4589517F">
+            <End Role="v_Vehicle_Model" EntitySet="v_Vehicle_Model" />
+            <End Role="v_Customer_Vehicle" EntitySet="v_Customer_Vehicle" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="v_Customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="c_password" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="l_name" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="f_name" Type="varchar" Nullable="false" MaxLength="256" />
+          <Property Name="licence_type" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="v_Customer_Vehicle">
+          <Key>
+            <PropertyRef Name="vuId" />
+          </Key>
+          <Property Name="vuId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="model_id" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="customer_id" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="insured" Type="bit" Nullable="false" />
+          <Property Name="color" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="trans" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="v_Vehicle_Model">
+          <Key>
+            <PropertyRef Name="model_id" />
+          </Key>
+          <Property Name="model_id" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="vehicle_type" Type="varchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK__v_Custome__custo__44952D46">
+          <End Role="v_Customer" Type="exam.Store.v_Customer" Multiplicity="1" />
+          <End Role="v_Customer_Vehicle" Type="exam.Store.v_Customer_Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="v_Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="v_Customer_Vehicle">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__v_Custome__model__4589517F">
+          <End Role="v_Vehicle_Model" Type="exam.Store.v_Vehicle_Model" Multiplicity="1" />
+          <End Role="v_Customer_Vehicle" Type="exam.Store.v_Customer_Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="v_Vehicle_Model">
+              <PropertyRef Name="model_id" />
+            </Principal>
+            <Dependent Role="v_Customer_Vehicle">
+              <PropertyRef Name="model_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="exam" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="exam_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="v_Customer" EntityType="exam.v_Customer" />
+          <EntitySet Name="v_Customer_Vehicle" EntityType="exam.v_Customer_Vehicle" />
+          <EntitySet Name="v_Vehicle_Model" EntityType="exam.v_Vehicle_Model" />
+          <AssociationSet Name="FK__v_Custome__custo__44952D46" Association="exam.FK__v_Custome__custo__44952D46">
+            <End Role="v_Customer" EntitySet="v_Customer" />
+            <End Role="v_Customer_Vehicle" EntitySet="v_Customer_Vehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__v_Custome__model__4589517F" Association="exam.FK__v_Custome__model__4589517F">
+            <End Role="v_Vehicle_Model" EntitySet="v_Vehicle_Model" />
+            <End Role="v_Customer_Vehicle" EntitySet="v_Customer_Vehicle" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="v_Customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="c_password" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="l_name" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="f_name" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
+          <Property Name="licence_type" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="v_Customer_Vehicle" Relationship="exam.FK__v_Custome__custo__44952D46" FromRole="v_Customer" ToRole="v_Customer_Vehicle" />
+        </EntityType>
+        <EntityType Name="v_Customer_Vehicle">
+          <Key>
+            <PropertyRef Name="vuId" />
+          </Key>
+          <Property Name="vuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="model_id" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="customer_id" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="insured" Type="Boolean" Nullable="false" />
+          <Property Name="color" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="trans" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="v_Customer" Relationship="exam.FK__v_Custome__custo__44952D46" FromRole="v_Customer_Vehicle" ToRole="v_Customer" />
+          <NavigationProperty Name="v_Vehicle_Model" Relationship="exam.FK__v_Custome__model__4589517F" FromRole="v_Customer_Vehicle" ToRole="v_Vehicle_Model" />
+        </EntityType>
+        <EntityType Name="v_Vehicle_Model">
+          <Key>
+            <PropertyRef Name="model_id" />
+          </Key>
+          <Property Name="model_id" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="vehicle_type" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="v_Customer_Vehicle" Relationship="exam.FK__v_Custome__model__4589517F" FromRole="v_Vehicle_Model" ToRole="v_Customer_Vehicle" />
+        </EntityType>
+        <Association Name="FK__v_Custome__custo__44952D46">
+          <End Role="v_Customer" Type="exam.v_Customer" Multiplicity="1" />
+          <End Role="v_Customer_Vehicle" Type="exam.v_Customer_Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="v_Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="v_Customer_Vehicle">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__v_Custome__model__4589517F">
+          <End Role="v_Vehicle_Model" Type="exam.v_Vehicle_Model" Multiplicity="1" />
+          <End Role="v_Customer_Vehicle" Type="exam.v_Customer_Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="v_Vehicle_Model">
+              <PropertyRef Name="model_id" />
+            </Principal>
+            <Dependent Role="v_Customer_Vehicle">
+              <PropertyRef Name="model_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="examStoreContainer" CdmEntityContainer="exam_Entities">
+          <EntitySetMapping Name="v_Customer"><EntityTypeMapping TypeName="exam.v_Customer"><MappingFragment StoreEntitySet="v_Customer">
+            <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+            <ScalarProperty Name="c_password" ColumnName="c_password" />
+            <ScalarProperty Name="l_name" ColumnName="l_name" />
+            <ScalarProperty Name="f_name" ColumnName="f_name" />
+            <ScalarProperty Name="licence_type" ColumnName="licence_type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="v_Customer_Vehicle"><EntityTypeMapping TypeName="exam.v_Customer_Vehicle"><MappingFragment StoreEntitySet="v_Customer_Vehicle">
+            <ScalarProperty Name="vuId" ColumnName="vuId" />
+            <ScalarProperty Name="model_id" ColumnName="model_id" />
+            <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+            <ScalarProperty Name="insured" ColumnName="insured" />
+            <ScalarProperty Name="color" ColumnName="color" />
+            <ScalarProperty Name="trans" ColumnName="trans" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="v_Vehicle_Model"><EntityTypeMapping TypeName="exam.v_Vehicle_Model"><MappingFragment StoreEntitySet="v_Vehicle_Model">
+            <ScalarProperty Name="model_id" ColumnName="model_id" />
+            <ScalarProperty Name="vehicle_type" ColumnName="vehicle_type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="exam">
+        <EntityTypeShape EntityType="exam.v_Customer" Width="1.5" PointX="0.75" PointY="1.125" Height="2.1725878906250005" IsExpanded="true" />
+        <EntityTypeShape EntityType="exam.v_Customer_Vehicle" Width="1.5" PointX="3" PointY="1" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="exam.v_Vehicle_Model" Width="1.5" PointX="0.75" PointY="5.375" Height="1.5956835937499996" IsExpanded="true" />
+        <AssociationConnector Association="exam.FK__v_Custome__custo__44952D46" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.2112939453125002" />
+          <ConnectorPoint PointX="3" PointY="2.2112939453125002" />
+        </AssociationConnector>
+        <AssociationConnector Association="exam.FK__v_Custome__model__4589517F" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.172841796875" />
+          <ConnectorPoint PointX="3.75" PointY="6.172841796875" />
+          <ConnectorPoint PointX="3.75" PointY="3.5571907552083326" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
